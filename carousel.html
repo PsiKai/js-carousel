@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="carousel.css">
+    
+</head>
+<body>
+    <div class ="carousel-container">
+      <!-- <div className="carousel"> -->
+            <img class="carousel-image" src="images/caravelle.jpg" alt="caravelle" />
+            <img class="carousel-image" src="images/doggirl.jpg" alt="doggirl" />
+            <img class="carousel-image" src="images/eyes.jpg" alt="eyes" />
+            <img class="carousel-image" src="images/nossi.jpg" alt="nossi" />
+            <img class="carousel-image" src="images/veuve.jpg" alt="veuve" />
+      <!-- </div> -->
+    </div>
+    <div class="nav" >
+        <button onclick="rotateL()">Prev</button>
+        <button onclick="rotateR()">Next</button>
+    </div>
+    <script>
+    
+        var curr = 0;
+        var imgs = Array.from(document.querySelectorAll(".carousel-image"));
+        
+        const setupCarousel = () => {
+            rotateCarousel(imgs);
+    
+            //UNCOMMENT TO START AUTO SCROLL
+        //     setInterval(() => {
+        //         curr--;
+        //         if (curr < -4) {
+        //             curr = 0
+        //         }
+        //         rotateCarousel(imgs)
+        //     }, 3000)
+        }
+
+        const rotateL = () => {
+            curr++;
+            if (curr > 0) {
+                curr = -4
+            }
+            rotateCarousel(imgs)
+        }
+
+        const rotateR = () => {
+            curr--;
+            if (curr < -4) {
+                curr = 0
+            }
+            rotateCarousel(imgs)
+        }
+    
+        const rotateCarousel = (imgs) => {
+            imgs.forEach(img => img.style.opacity = 0)
+            var l = imgs.length - 1
+            var c = Math.abs(curr)
+            imgs[c].style.transform = "translateX(0)"
+            imgs[c].style.opacity = "1"
+            imgs[c + 1 > 4 ? 0 : c + 1].style.transform = "translateX(100%)"
+            imgs[c + 2 > 4 ? 1 - (l - c) : c + 2].style.transform = 'translateX(200%)';
+            imgs[c - 1 < 0 ? 4 : c - 1].style.transform = 'translateX(-100%)';
+            imgs[c - 2 < 0 ? 3 + c : c - 2].style.transform = 'translateX(-200%)';
+            
+        }
+    
+        setupCarousel();
+        </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.carousel-container {
+  width: 600px;
+  height: 500px !important;
+  margin: 10rem auto 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-image {
+  opacity: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease-in-out, opacity 600ms ease-in;
+}
+
+.carousel-image:not(:first-of-type) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.nav {
+  text-align: center;
+}
