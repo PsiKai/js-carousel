@@ -15,3 +15,4 @@ Very basic tech. Comes with 5 images to demonstrate, and are all static files.
 ### TODO:
 
 - Optimize the carousel function to work for any number of images.
+- Create a basic test
